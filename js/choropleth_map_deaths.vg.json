@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Crude Death Rate by State in Malaysia Per 1,000 Population (2022)",
+    "fontSize": 22,
+    "fontWeight": "bold",
+    "font": "Arial"
+  },
+  "width": 800,
+  "height": 500,
+  "projection": {
+    "type": "mercator",
+    "center": [110, 2],  
+    "scale": 1500        
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ChaiKeRou/FIT3179-DataVisualisation2/main/js/ne_10m.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
+      },
+      "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5, "fill": "lightgray"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ChaiKeRou/FIT3179-DataVisualisation2/main/js/malaysia.state.json",
+        "format": {"type": "topojson", "feature": "malaysia.state"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {"url": "https://raw.githubusercontent.com/ChaiKeRou/FIT3179-DataVisualisation2/main/data/crude_death.csv"},
+            "key": "State",
+            "fields": ["Deaths"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "#7c5d5d", "strokeWidth": 1},
+      "encoding": {
+        "color": {
+          "field": "Deaths",
+          "type": "quantitative",
+          "scale": {
+            "domain": [4, 8], 
+            "range": ["#fee5d9","#fcae91", "#fb6a4a","#de2d26", "#a50f15"] 
+          },
+          "legend": {
+            "title": "Crude Death Rate (Per 1,000 Population)",
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "titleFontSize": 9,
+            "labelFontSize": 8,
+            "gradientLength": 250,
+            "titleLimit": 250,
+            "offset":5
+          }
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State"},
+          {"field": "Deaths", "type": "quantitative", "title": "Crude Death Rate"}
+        ]
+      }
+    },
+    {
+      "data": {"graticule": {"step": [5, 5]}},  
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#888",
+        "strokeWidth": 0.5,
+        "strokeDash": [3, 3]  
+      }
+    }
+  ],
+  "config": {
+    "background": "whitesmoke",
+    "padding": {"top": 20, "left": 10, "right": -50, "bottom": 10},  
+    "title": {"anchor": "start", "offset": 10},  
+    "view": {"stroke": null}
+  }
+}
