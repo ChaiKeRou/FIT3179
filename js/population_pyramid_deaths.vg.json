@@ -13,50 +13,15 @@
       "as": "Deaths_adjusted"
     }
   ],
-  "params": [
-    {
-      "name": "sex_highlight",
-      "select": {
-        "type": "point",
-        "fields": [
-          "gender"
-        ]
-      },
-      "bind": "legend"
-    }
-  ],
   "spacing": 0,
   "hconcat": [
-    {
-      "mark": {
-        "type": "text",
-        "baseline": "middle",
-        "dx": 10,
-        "fontSize": 11.5,
-        "fontStyle": "italic"
-      },
-      "encoding": {
-        "text": {
-          "field": "Deaths",
-          "type": "quantitative"
-        },
-        "color": {
-          "value": "black"
-        },
-        "opacity": {
-          "condition": {
-            "test": "datum['Age group'] == '>= 85' && datum['gender'] == 'Female'","value": 1
-          },
-          "value": 0
-        }
-      }
-    },
     {
       "transform": [
         {
           "filter": "datum.gender == 'Female'"
         }
       ],
+      "width": 190,
       "title": "Female",
       "mark": "bar",
       "encoding": {
@@ -100,18 +65,7 @@
               "#675193",
               "#ca8861"
             ]
-          },
-          "legend": {
-            "title": "Gender",
-            "orient": "top"
           }
-        },
-        "opacity": {
-          "condition": {
-            "param": "sex_highlight",
-            "value": 0.6
-          },
-          "value": 0.2
         },
         "tooltip": [
           {
@@ -173,6 +127,7 @@
           "filter": "datum.gender == 'Male'"
         }
       ],
+      "width": 190,
       "title": "Male",
       "mark": "bar",
       "encoding": {
@@ -218,13 +173,6 @@
             ]
           },
           "legend": null
-        },
-        "opacity": {
-          "condition": {
-            "param": "sex_highlight",
-            "value": 0.6
-          },
-          "value": 0.2
         },
         "tooltip": [
           {
