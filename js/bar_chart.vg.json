@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {"view": {"stroke": ""}},
+    "width": 500,
+    "height": 200,
+    "data": {
+      "values": [
+        {"ethnic_group": "Malay", "count": 108627},
+        {"ethnic_group": "Chinese", "count": 53333},
+        {"ethnic_group": "Indians", "count": 16935},
+        {"ethnic_group": "Other Bumiputera", "count": 21914}
+      ]
+    },
+    "mark": "bar",
+    "encoding": {
+      "y": {"field": "ethnic_group", "type": "nominal", "title": "Ethnic Group"},
+      "x": {"field": "count", "type": "quantitative", "title": "Deaths"}
+    }
+  }
