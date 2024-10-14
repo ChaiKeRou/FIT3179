@@ -112,7 +112,7 @@
           "baseline": "middle",
           "dx": 300,
           "dy": -150,
-          "fontSize": 10,
+          "fontSize": 14,
           "color": "black",
           "lineBreak": "\n"
         },
