@@ -1,11 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "config": {
-        "view": {
-            "stroke": ""
-        }
+        "view": {"stroke": null}
     },
-    "width": 600,
+    "width": 1050,
     "height": 400,
     "data": {
         "url": "https://raw.githubusercontent.com/ChaiKeRou/3179/main/data/deaths_2000_2022.csv"
@@ -112,8 +110,8 @@
           "font": "Arial",
           "align": "center",
           "baseline": "middle",
-          "dx": 230,
-          "dy": -180,
+          "dx": 300,
+          "dy": -150,
           "fontSize": 10,
           "color": "black",
           "lineBreak": "\n"
