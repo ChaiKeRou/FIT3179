@@ -1,11 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "config": {
-        "view": {
-            "stroke": ""
-        }
-    },
-    "width": "container",
+    "width": 600,
     "height": 400,
     "data": {
         "url": "https://raw.githubusercontent.com/ChaiKeRou/3179/main/data/deaths_2000_2022.csv"
@@ -27,7 +22,10 @@
         "encoding": {
             "x": {
                 "field": "Year",
-                "type": "quantitative"
+                "type": "ordinal",
+                "axis": {
+                    "labelAngle": 0
+                }
             },
             "y": {
                 "field": "Deaths",
