@@ -1,0 +1,106 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+        "view": {
+            "stroke": ""
+        }
+    },
+    "width": 800,
+    "height": 400,
+    "data": {
+        "url": "https://raw.githubusercontent.com/ChaiKeRou/3179/main/data/deaths_2000_2022.csv"
+    },
+    "params": [
+        {
+            "name": "category_highlight",
+            "select": {
+                "type": "point",
+                "fields": [
+                    "Causes of death"
+                ]
+            },
+            "bind": "legend"
+        }
+    ],
+    "mark": {
+        "type": "line",
+        "point": true
+    },
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "quantitative"
+        },
+        "y": {
+            "field": "Deaths",
+            "type": "quantitative",
+            "title": "Deaths"
+        },
+        "order": {
+            "field": "Year",
+            "type": "quantitative"
+        },
+        "color": {
+            "field": "Causes of death",
+            "type": "nominal",
+            "scale": {
+                "range": [
+                    "#1f77b4",
+                    "#ff7f0e",
+                    "#2ca02c",
+                    "#d62728",
+                    "#9467bd",
+                    "#8c564b",
+                    "#e377c2",
+                    "#7f7f7f",
+                    "#bcbd22",
+                    "#17becf",
+                    "#aec7e8",
+                    "#ffbb78",
+                    "#98df8a",
+                    "#ff9896",
+                    "#c5b0d5",
+                    "#c49c94",
+                    "#f7b6d2",
+                    "#c7c7c7",
+                    "#dbdb8d",
+                    "#9edae5"
+                ]
+            },
+            "legend": {
+                "title": "Causes of death",
+                "orient": "right"
+            }
+        },
+        "opacity": {
+            "condition": {
+                "param": "category_highlight",
+                "value": 1
+            },
+            "value": 0.2
+        },
+        "tooltip": [
+            {
+                "field": "Causes of death",
+                "title": "Causes of death",
+                "type": "nominal"
+            },
+            {
+                "field": "Category",
+                "title": "Category",
+                "type": "nominal"
+            },
+            {
+                "field": "Year",
+                "title": "Year",
+                "type": "quantitative"
+            },
+            {
+                "field": "Deaths",
+                "title": "Deaths",
+                "type": "quantitative",
+                "format": ","
+            }
+        ]
+    }
+}
